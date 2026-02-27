@@ -11,7 +11,10 @@ def menu_opciones():
 
 
 def anadir_tarea(tarea):
-    description = input("Introduce la información de la tarea a completar: ")
+    description = input("Introduce la información de la tarea a completar: ").strip()
+    if not description:
+        print("La tarea no puede estar vacía.")
+        return
     tarea.append(Task(description))
     print("Tarea añadida")
 
@@ -21,8 +24,8 @@ def listar_tarea(tarea):
         return
 
     print("\nLista de tareas: ")
-    for index, tarea in enumerate(tarea):
-        print(f"{index + 1}. {tarea}")
+    for index, item in enumerate(tarea):
+        print(f"{index + 1}. {item}")
 
 
 def tarea_completada(tarea):
